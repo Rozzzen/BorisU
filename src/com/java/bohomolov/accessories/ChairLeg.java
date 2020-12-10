@@ -20,7 +20,7 @@ public class ChairLeg {
 
     @Override
     public String toString() {
-        return "Each made of " + color.getColor() + " color " + material.getMaterial();
+        return "Footing made of " + color.getColor() + " color " + material.getMaterial();
     }
 
     public Color getColor() {

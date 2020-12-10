@@ -11,7 +11,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Demo {
-    public static void main(String[] args) throws Exception {
+//    public static void main(String[] args) throws Exception {
 //
 //        List<ChairLeg> chairWheelList = Arrays.asList(
 //                new ChairWheel(Material.PLASTIC, Color.RED, Color.BLACK),
@@ -74,6 +74,6 @@ public class Demo {
 //
 //        User user = new User("John");
 //        user.sit(woodenStool);
-
-    }
+//
+//    }
 }

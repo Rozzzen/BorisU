@@ -17,10 +17,7 @@ public class BarStool extends Stool implements Riseable, Spinable {
 
     public BarStool(int height) {
         super(height, Style.MODERN, new ChairSeat(Material.WOOD, Color.RED), Arrays.asList(
-                new ChairLeg(Material.WOOD, Color.BROWN),
-                new ChairLeg(Material.WOOD, Color.BROWN),
-                new ChairLeg(Material.WOOD, Color.BROWN),
-                new ChairLeg(Material.WOOD, Color.BROWN))
+                new ChairLeg(Material.STEEL, Color.WHITE))
         );
     }
 

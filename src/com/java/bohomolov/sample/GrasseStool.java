@@ -16,10 +16,10 @@ public class GrasseStool extends StoolOnWheels implements Rideable, Spinable {
 
     public GrasseStool(int height, Color color) {
         super(height, Style.MODERN, new ChairSeat(Material.LEATHER, color),  Arrays.asList(
-                new ChairWheel(Material.LEATHER, color, color),
-                new ChairWheel(Material.LEATHER, color, color),
-                new ChairWheel(Material.LEATHER, color, color),
-                new ChairWheel(Material.LEATHER, color, color)));
+                new ChairWheel(Material.LEATHER, color, color, true, 10),
+                new ChairWheel(Material.LEATHER, color, color, true, 10),
+                new ChairWheel(Material.LEATHER, color, color, true, 10),
+                new ChairWheel(Material.LEATHER, color, color, true, 10)));
     }
 
     @Override

@@ -16,18 +16,18 @@ import java.util.List;
 public class GamerChairTest {
 
     private final List<ChairWheel> chairWheelList1 = Arrays.asList(
-            new ChairWheel(Material.PLASTIC, Color.RED, Color.BLACK),
-            new ChairWheel(Material.PLASTIC, Color.RED, Color.BLACK),
-            new ChairWheel(Material.PLASTIC, Color.RED, Color.BLACK),
-            new ChairWheel(Material.PLASTIC, Color.RED, Color.BLACK),
-            new ChairWheel(Material.PLASTIC, Color.RED, Color.BLACK)
+            new ChairWheel(Material.PLASTIC, Color.RED, Color.BLACK, true, 10),
+            new ChairWheel(Material.PLASTIC, Color.RED, Color.BLACK, true, 10),
+            new ChairWheel(Material.PLASTIC, Color.RED, Color.BLACK, true, 10),
+            new ChairWheel(Material.PLASTIC, Color.RED, Color.BLACK, false, 10),
+            new ChairWheel(Material.PLASTIC, Color.RED, Color.BLACK, false, 10)
     );
     private final List<ChairWheel> chairWheelList2 = Arrays.asList(
-            new ChairWheel(Material.PLASTIC, Color.RED, Color.BLACK),
-            new ChairWheel(Material.PLASTIC, Color.RED, Color.BLACK),
-            new ChairWheel(Material.PLASTIC, Color.RED, Color.BLACK),
-            new ChairWheel(Material.PLASTIC, Color.RED, Color.BLACK),
-            new ChairWheel(Material.PLASTIC, Color.RED, Color.BLACK)
+            new ChairWheel(Material.PLASTIC, Color.RED, Color.BLACK, true, 10),
+            new ChairWheel(Material.PLASTIC, Color.RED, Color.BLACK, true, 10),
+            new ChairWheel(Material.PLASTIC, Color.RED, Color.BLACK, false, 10),
+            new ChairWheel(Material.PLASTIC, Color.RED, Color.BLACK, false, 10),
+            new ChairWheel(Material.PLASTIC, Color.RED, Color.BLACK, false, 10)
     );
 
     private final List<Armrest> armrestList1 = Arrays.asList(
@@ -86,7 +86,7 @@ public class GamerChairTest {
     public void ToStringTest() {
         String expected = "Height: 65" + System.lineSeparator() +
                 "Designed in High-tech style" + System.lineSeparator() +
-                "With 5 legs Each made of Red color Plastic. Wheel color is Black" + System.lineSeparator() +
+                "With 5 legs Footing made of Red color Plastic. Wheel color is Black" + ", Price is: 10.0" + System.lineSeparator() +
                 "Chair seat made of Red color Cloth" + System.lineSeparator() +
                 "Chair back made of Red color Cloth" + System.lineSeparator() +
                 "Armrests made of Red color Plastic" + System.lineSeparator();

@@ -8,18 +8,26 @@ import java.util.Objects;
 public class ChairWheel extends ChairLeg {
 
     private final Color wheelColor;
+    private boolean rentable;
+    private double price;
 
-    public ChairWheel(Material material, Color color, Color wheelColor) {
+    public ChairWheel(Material material, Color color, Color wheelColor, boolean rentable, double price) {
         super(material, color);
         this.wheelColor = wheelColor;
+        this.rentable = rentable;
+        this.price = price;
     }
+
+    public double getPrice() {return price;}
+    public boolean isRentable() {return rentable; }
 
     public Color getWheelColor() {
         return wheelColor;
     }
 
     public String toString() {
-        return super.toString() + ". Wheel color is " + wheelColor.getColor();
+        return super.toString() + ". Wheel color is " + wheelColor.getColor() +
+                ", Price is: " + getPrice();
     }
 
     @Override

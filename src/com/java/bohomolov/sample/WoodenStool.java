@@ -13,7 +13,6 @@ import java.util.Arrays;
 public class WoodenStool extends Stool {
 
     public class PaintKit {
-
         Color color;
 
         public PaintKit(Color color) {
