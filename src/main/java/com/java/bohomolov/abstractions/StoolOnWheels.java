@@ -1,9 +1,11 @@
 package com.java.bohomolov.abstractions;
 
+import com.java.bohomolov.accessories.ChairLeg;
 import com.java.bohomolov.accessories.ChairSeat;
 import com.java.bohomolov.accessories.ChairWheel;
 import com.java.bohomolov.enums.Style;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class StoolOnWheels extends Stool {
@@ -17,7 +19,12 @@ public abstract class StoolOnWheels extends Stool {
         return super.toString();
     }
 
-    public List<ChairWheel> getLegList() {
-        return (List<ChairWheel>) super.getLegList();
+    public List<ChairWheel> getWheelList() {
+        List<ChairLeg> chairLegs = super.getLegList();
+        List<ChairWheel> chairWheels = new ArrayList<>();
+        for(ChairLeg chairLeg : chairLegs) {
+            chairWheels.add((ChairWheel) chairLeg);
+        }
+        return chairWheels;
     }
 }

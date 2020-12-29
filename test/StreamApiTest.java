@@ -49,7 +49,7 @@ public class StreamApiTest {
     @Test
     public void getPlasticPriceSum_Equals60_True() {
         GamerChair gamerChair1 = new GamerChair(65, new ChairSeat(Material.CLOTH, Color.RED), chairWheelList1, new ChairBack(Material.CLOTH, Color.RED), armrestList1);//
-        double actual = GamerChair.getPlasticPriceSum(gamerChair1.getLegList());
+        double actual = GamerChair.getPlasticPriceSum(gamerChair1.getWheelList());
         double expected = 60;
         Assert.assertEquals(actual, expected, 0);
     }
@@ -57,7 +57,7 @@ public class StreamApiTest {
     @Test
     public void getAveragePrice_Equals30_True() {
         GamerChair gamerChair1 = new GamerChair(65, new ChairSeat(Material.CLOTH, Color.RED), chairWheelList1, new ChairBack(Material.CLOTH, Color.RED), armrestList1);//
-        double actual = GamerChair.getAveragePrice(gamerChair1.getLegList());
+        double actual = GamerChair.getAveragePrice(gamerChair1.getWheelList());
         double expected = 30;
         Assert.assertEquals(actual, expected, 0);
     }
@@ -65,7 +65,7 @@ public class StreamApiTest {
     @Test
     public void getMaxPrice_Equals50_True() {
         GamerChair gamerChair1 = new GamerChair(65, new ChairSeat(Material.CLOTH, Color.RED), chairWheelList1, new ChairBack(Material.CLOTH, Color.RED), armrestList1);//
-        double actual = GamerChair.getMaxPrice(gamerChair1.getLegList());
+        double actual = GamerChair.getMaxPrice(gamerChair1.getWheelList());
         double expected = 50;
         Assert.assertEquals(actual, expected, 0);
     }
@@ -73,7 +73,7 @@ public class StreamApiTest {
     @Test
     public void getGroupByMaterialAndPrice_Filter_True() {
         GamerChair gamerChair1 = new GamerChair(65, new ChairSeat(Material.CLOTH, Color.RED), chairWheelList1, new ChairBack(Material.CLOTH, Color.RED), armrestList1);//
-        Map<Boolean, List<ChairWheel>> actual = gamerChair1.getGroupByMaterialAndPrice(p -> p.getMaterial().equals(Material.PLASTIC) && p.getPrice() < 30);
+        Map<Boolean, List<ChairWheel>> actual = gamerChair1.getGroupByMaterialAndPrice(p -> p.getChairLegMaterial().equals(Material.PLASTIC) && p.getPrice() < 30);
 
         Map<Boolean, List<ChairWheel>> expected = new HashMap<>();
         List<ChairWheel> expectedFalseList = Arrays.asList(

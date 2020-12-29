@@ -1,7 +1,10 @@
 package com.java.bohomolov.sample;
 
 import com.java.bohomolov.abstractions.ChairOnWheels;
-import com.java.bohomolov.accessories.*;
+import com.java.bohomolov.accessories.Armrest;
+import com.java.bohomolov.accessories.ChairBack;
+import com.java.bohomolov.accessories.ChairSeat;
+import com.java.bohomolov.accessories.ChairWheel;
 import com.java.bohomolov.enums.Color;
 import com.java.bohomolov.enums.Material;
 import com.java.bohomolov.enums.Style;
@@ -13,13 +16,15 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-import java.util.function.BiPredicate;
 import java.util.function.Function;
-import java.util.function.Predicate;
+import java.util.function.Supplier;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 public class GamerChair extends ChairOnWheels  implements Rideable, Spinable {
 
+    private static final Logger GAMERCHAIRLOGGER = Logger.getGlobal();
 
     public GamerChair(int height, ChairSeat chairSeat, List<ChairWheel> legList, ChairBack chairBack, List<Armrest> armrestList) {
         super(height, Style.HIGHTEC, chairSeat, legList, chairBack, armrestList);
@@ -28,24 +33,24 @@ public class GamerChair extends ChairOnWheels  implements Rideable, Spinable {
     @Override
     public void sit() throws MissingAccessoryException {
         if(getChairSeat() == null) throw new MissingAccessoryException("Missing seat");
-        System.out.println("Sit on gamer chair");
+        GAMERCHAIRLOGGER.log(Level.INFO, "Sit on gamer chair");
     }
 
     @Override
     public void ride() {
         if(getLegList().contains(null)) throw new MissingAccessoryException("Missing wheels");
-        System.out.println("riding on gamer chair");
+        GAMERCHAIRLOGGER.log(Level.INFO, "Riding on gamer chair");
     }
 
     public void tiltBack() {
         if(getChairBack() == null) throw new MissingAccessoryException("Missing back");
-        System.out.println("tilted chair back");
+        GAMERCHAIRLOGGER.log(Level.INFO,"tilted chair back");
     }
 
     @Override
     public void spin() throws MissingAccessoryException {
         if(getChairSeat() == null) throw new MissingAccessoryException("Missing seat");
-        System.out.println("Spin on gamer chair");
+        GAMERCHAIRLOGGER.log(Level.INFO, "Spin on gamer chair");
     }
 
     public static void main(String[] args) {
@@ -76,22 +81,22 @@ public class GamerChair extends ChairOnWheels  implements Rideable, Spinable {
         GamerChair gamerChair1 = new GamerChair(65, new ChairSeat(Material.CLOTH, Color.RED), chairWheelList1, new ChairBack(Material.CLOTH, Color.RED), armrestList1);//
         GamerChair gamerChair2 = new GamerChair(65, new ChairSeat(Material.CLOTH, Color.RED), chairWheelList2, new ChairBack(Material.CLOTH, Color.RED), armrestList2);//
         List<GamerChair> gamerChairList = Arrays.asList(gamerChair1, gamerChair2);
-        System.out.println(getMostFrequentChairWheelColors(gamerChairList));
-        System.out.println(getPlasticPriceSum(gamerChair1.getLegList()));
-        System.out.println(getAveragePrice(gamerChair1.getLegList()));
-        System.out.println(getMaxPrice(gamerChair1.getLegList()));
-        System.out.println(gamerChair1.getGroupByMaterialAndPrice(p -> p.getMaterial().equals(Material.PLASTIC) && p.getPrice() < 30));
+        GAMERCHAIRLOGGER.info((Supplier<String>) getMostFrequentChairWheelColors(gamerChairList));
+        GAMERCHAIRLOGGER.info(String.valueOf(getPlasticPriceSum(gamerChair1.getWheelList())));
+        GAMERCHAIRLOGGER.info(String.valueOf(getAveragePrice(gamerChair1.getWheelList())));
+        GAMERCHAIRLOGGER.info(String.valueOf(getMaxPrice(gamerChair1.getWheelList())));
+        GAMERCHAIRLOGGER.info(gamerChair1.getGroupByMaterialAndPrice(p -> p.getChairLegMaterial().equals(Material.PLASTIC) && p.getPrice() < 30).toString());
     }
 
     public static List<String> getMostFrequentChairWheelColors(List<GamerChair> gamerChairList) {
         List<String> result = new ArrayList<>();
         gamerChairList.stream()
-                .flatMap(x -> x.getLegList().stream())
+                .flatMap(x -> x.getWheelList().stream())
                 .collect(Collectors.toList())
                 .stream()
                 .collect(Collectors.groupingBy(ChairWheel::isRentable))
                 .forEach((key, value) -> value.stream()
-                        .collect(Collectors.groupingBy(x -> x.getColor().getColor(), Collectors.counting()))
+                        .collect(Collectors.groupingBy(x -> x.getChairLegColor().getColour(), Collectors.counting()))
                         .entrySet()
                         .stream()
                         .max(Map.Entry.comparingByValue())
@@ -101,7 +106,7 @@ public class GamerChair extends ChairOnWheels  implements Rideable, Spinable {
 
     public static double getPlasticPriceSum(List<ChairWheel> list) {
         return list.stream().
-                filter(x -> x.getMaterial().equals(Material.PLASTIC)).
+                filter(x -> x.getChairLegMaterial().equals(Material.PLASTIC)).
                 mapToDouble(ChairWheel::getPrice).
                 sum();
     }
@@ -119,7 +124,7 @@ public class GamerChair extends ChairOnWheels  implements Rideable, Spinable {
     }
 
     public Map<Boolean, List<ChairWheel>> getGroupByMaterialAndPrice(Function<ChairWheel, Boolean> chairWheelPredicate) {
-        return getLegList().stream().
+        return getWheelList().stream().
                 collect(Collectors.groupingBy(chairWheelPredicate));
     }
 }

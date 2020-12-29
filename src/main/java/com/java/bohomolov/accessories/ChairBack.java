@@ -7,24 +7,24 @@ import java.util.Objects;
 
 public class ChairBack {
 
-    private final Material material;
-    private final Color color;
+    private final Material chairBackMaterial;
+    private final Color chairBackColor;
 
-    public ChairBack(Material material, Color color) {
-        this.material = material;
-        this.color = color;
+    public ChairBack(Material chairBackMaterial, Color chairBackColor) {
+        this.chairBackMaterial = chairBackMaterial;
+        this.chairBackColor = chairBackColor;
     }
 
-    public Material getMaterial() {
-        return material;
+    public Material getChairBackMaterial() {
+        return chairBackMaterial;
     }
 
-    public Color getColor() {
-        return color;
+    public Color getChairBackColor() {
+        return chairBackColor;
     }
 
     public String toString() {
-        return "Chair back made of " + color.getColor() + " color " + material.getMaterial();
+        return "Chair back made of " + chairBackColor.getColour() + " color " + chairBackMaterial.getMaterialName();
     }
 
     @Override
@@ -32,12 +32,12 @@ public class ChairBack {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ChairBack chairBack = (ChairBack) o;
-        return getMaterial() == chairBack.getMaterial() &&
-                getColor() == chairBack.getColor();
+        return getChairBackMaterial() == chairBack.getChairBackMaterial() &&
+                getChairBackColor() == chairBack.getChairBackColor();
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getMaterial(), getColor());
+        return Objects.hash(getChairBackMaterial(), getChairBackColor());
     }
 }

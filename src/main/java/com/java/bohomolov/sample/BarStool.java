@@ -11,9 +11,13 @@ import com.java.bohomolov.interfaces.Riseable;
 import com.java.bohomolov.interfaces.Spinable;
 
 import java.util.Arrays;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class BarStool extends Stool implements Riseable, Spinable {
 
+    private static final Logger LOGGER = Logger.getGlobal();
+    private static final String EXCEPTION_MESSAGE = "Missing seat";
 
     public BarStool(int height) {
         super(height, Style.MODERN, new ChairSeat(Material.WOOD, Color.RED), Arrays.asList(
@@ -23,28 +27,28 @@ public class BarStool extends Stool implements Riseable, Spinable {
 
     @Override
     public void riseChair() {
-        if(getChairSeat() == null) throw new MissingAccessoryException("Missing seat");
-        System.out.println("Rised chair");
+        if(getChairSeat() == null) throw new MissingAccessoryException(EXCEPTION_MESSAGE);
+        LOGGER.log(Level.INFO, "Rised chair");
         setHeight(getHeight() + 25);
     }
 
     @Override
     public void lowerChair() {
-        if(getChairSeat() == null) throw new MissingAccessoryException("Missing seat");
-        System.out.println("Lowered chair");
+        if(getChairSeat() == null) throw new MissingAccessoryException(EXCEPTION_MESSAGE);
+        LOGGER.log(Level.INFO, "Lowered chair");
         setHeight(getHeight() - 25);
     }
 
     @Override
     public void sit() {
-        if(getChairSeat() == null) throw new MissingAccessoryException("Missing seat");
-        System.out.println("Siting on bar stool");
+        if(getChairSeat() == null) throw new MissingAccessoryException(EXCEPTION_MESSAGE);
+        LOGGER.log(Level.INFO, "Siting on bar stool");
     }
 
     @Override
     public void spin() {
         if(getLegList().contains(null)) throw new MissingAccessoryException("Missing footing");
-        System.out.println("Bar stool spins");
+        LOGGER.log(Level.INFO, "Bar stool spins");
     }
 
 

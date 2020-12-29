@@ -9,8 +9,12 @@ import com.java.bohomolov.enums.Style;
 import com.java.bohomolov.exceptions.MissingAccessoryException;
 
 import java.util.Arrays;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class WoodenStool extends Stool {
+
+    private static final Logger LOGGER = Logger.getGlobal();
 
     public class PaintKit {
         Color color;
@@ -20,8 +24,8 @@ public class WoodenStool extends Stool {
         }
 
         public void paintChair() {
-            WoodenStool.this.getChairSeat().setColor(color);
-            WoodenStool.this.getLegList().forEach(x -> x.setColor(color));
+            WoodenStool.this.getChairSeat().setChairSeatColor(color);
+            WoodenStool.this.getLegList().forEach(x -> x.setChairLegColor(color));
         }
 
     }
@@ -38,6 +42,6 @@ public class WoodenStool extends Stool {
     @Override
     public void sit() {
         if(getChairSeat() == null) throw new MissingAccessoryException("Missing seat");
-        System.out.println("Siting on wooden stool");
+        LOGGER.log(Level.INFO, "Siting on wooden stool");
     }
 }

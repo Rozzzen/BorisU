@@ -10,7 +10,6 @@ public class User {
     }
 
     public void sit(Stool stool) {
-        System.out.print(name + " ");
         stool.sit();
     }
 

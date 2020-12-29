@@ -36,15 +36,15 @@ public abstract class Stool {
         this.chairSeat = chairSeat;
     }
 
-    public List<? extends ChairLeg> getLegList() {
-        return legList;
+    public List<ChairLeg> getLegList() {
+        return (List<ChairLeg>) legList;
     }
 
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("Height: ").append(getHeight()).append(System.lineSeparator())
-        .append("Designed in ").append(style.getStyle()).append(" style").append(System.lineSeparator())
+        .append("Designed in ").append(style.getStyleName()).append(" style").append(System.lineSeparator())
         .append("With ").append(legList.size()).append(" legs ").append(legList.get(0)).append(System.lineSeparator())
         .append(chairSeat).append(System.lineSeparator());
         return stringBuilder.toString();

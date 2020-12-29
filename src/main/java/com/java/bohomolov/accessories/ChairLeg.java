@@ -7,28 +7,28 @@ import java.util.Objects;
 
 public class ChairLeg {
 
-    private final Material material;
-    private Color color;
+    private final Material chairLegMaterial;
+    private Color chairLegColor;
 
-    public ChairLeg(Material material, Color color) {
-        this.material = material;
-        this.color = color;
+    public ChairLeg(Material chairLegMaterial, Color chairLegColor) {
+        this.chairLegMaterial = chairLegMaterial;
+        this.chairLegColor = chairLegColor;
     }
-    public Material getMaterial() {
-        return material;
+    public Material getChairLegMaterial() {
+        return chairLegMaterial;
     }
 
     @Override
     public String toString() {
-        return "Footing made of " + color.getColor() + " color " + material.getMaterial();
+        return "Footing made of " + chairLegColor.getColour() + " color " + chairLegMaterial.getMaterialName();
     }
 
-    public Color getColor() {
-        return color;
+    public Color getChairLegColor() {
+        return chairLegColor;
     }
 
-    public void setColor(Color color) {
-        this.color = color;
+    public void setChairLegColor(Color chairLegColor) {
+        this.chairLegColor = chairLegColor;
     }
 
     @Override
@@ -36,12 +36,12 @@ public class ChairLeg {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ChairLeg chairLeg = (ChairLeg) o;
-        return getMaterial() == chairLeg.getMaterial() &&
-                getColor() == chairLeg.getColor();
+        return getChairLegMaterial() == chairLeg.getChairLegMaterial() &&
+                getChairLegColor() == chairLeg.getChairLegColor();
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getMaterial(), getColor());
+        return Objects.hash(getChairLegMaterial(), getChairLegColor());
     }
 }

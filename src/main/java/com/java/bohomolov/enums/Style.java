@@ -7,13 +7,13 @@ public enum Style {
     HIGHTEC ("High-tech"),
     BAROKKO ("Barokko");
 
-    private final String style;
+    private final String styleName;
 
-    Style(String style) {
-        this.style = style;
+    Style(String styleName) {
+        this.styleName = styleName;
     }
 
-    public String getStyle() {
-        return style;
+    public String getStyleName() {
+        return styleName;
     }
 }

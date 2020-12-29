@@ -1,9 +1,6 @@
 package com.java.bohomolov.abstractions;
 
-import com.java.bohomolov.accessories.Armrest;
-import com.java.bohomolov.accessories.ChairBack;
-import com.java.bohomolov.accessories.ChairSeat;
-import com.java.bohomolov.accessories.ChairWheel;
+import com.java.bohomolov.accessories.*;
 import com.java.bohomolov.enums.Style;
 
 import java.util.ArrayList;
@@ -12,11 +9,7 @@ import java.util.Objects;
 
 public abstract class ChairOnWheels extends Chair {
 
-    private final List<Armrest> armrestList;
-
-    {
-        armrestList = new ArrayList<>();
-    }
+    private final List<Armrest> armrestList = new ArrayList<>();
 
     protected ChairOnWheels(int height, Style style, ChairSeat chairSeat,
                             List<ChairWheel> legList, ChairBack chairBack, List<Armrest> armrestList)
@@ -32,8 +25,13 @@ public abstract class ChairOnWheels extends Chair {
         return stringBuilder.toString();
     }
 
-    public List<ChairWheel> getLegList() {
-        return (List<ChairWheel>) super.getLegList();
+    public List<ChairWheel> getWheelList() {
+        List<ChairLeg> chairLegs = super.getLegList();
+        List<ChairWheel> chairWheels = new ArrayList<>();
+        for(ChairLeg chairLeg : chairLegs) {
+            chairWheels.add((ChairWheel) chairLeg);
+        }
+        return chairWheels;
     }
 
     @Override

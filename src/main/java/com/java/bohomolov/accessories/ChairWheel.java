@@ -27,7 +27,7 @@ public class ChairWheel extends ChairLeg {
     }
 
     public String toString() {
-        return super.toString() + ". Wheel color is " + wheelColor.getColor() +
+        return super.toString() + ". Wheel color is " + wheelColor.getColour() +
                 ", Price is: " + getPrice();
     }
 

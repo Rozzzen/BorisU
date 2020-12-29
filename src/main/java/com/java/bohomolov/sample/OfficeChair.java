@@ -10,9 +10,12 @@ import com.java.bohomolov.enums.Style;
 import com.java.bohomolov.exceptions.MissingAccessoryException;
 
 import java.util.Arrays;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class OfficeChair extends Chair {
 
+    private static final Logger LOGGER = Logger.getGlobal();
 
     public OfficeChair(int height) {
         super(height, Style.MODERN,
@@ -27,7 +30,7 @@ public class OfficeChair extends Chair {
     @Override
     public void sit() {
         if(getChairSeat() == null) throw new MissingAccessoryException("Missing seat");
-        System.out.println("Siting on office chair");
+        LOGGER.log(Level.INFO, "Siting on office chair");
     }
 
 }

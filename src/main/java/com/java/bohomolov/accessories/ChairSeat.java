@@ -7,29 +7,29 @@ import java.util.Objects;
 
 public class ChairSeat {
 
-    private final Material material;
-    private Color color;
+    private final Material chairSeatMaterial;
+    private Color chairSeatColor;
 
-    public ChairSeat(Material material, Color color) {
-        this.material = material;
-        this.color = color;
+    public ChairSeat(Material chairSeatMaterial, Color chairSeatColor) {
+        this.chairSeatMaterial = chairSeatMaterial;
+        this.chairSeatColor = chairSeatColor;
     }
 
-    public Material getMaterial() {
-        return material;
+    public Material getChairSeatMaterial() {
+        return chairSeatMaterial;
     }
 
-    public Color getColor() {
-        return color;
+    public Color getChairSeatColor() {
+        return chairSeatColor;
     }
 
-    public void setColor(Color color) {
-        this.color = color;
+    public void setChairSeatColor(Color chairSeatColor) {
+        this.chairSeatColor = chairSeatColor;
     }
 
     @Override
     public String toString() {
-        return "Chair seat made of " + color.getColor() + " color " + material.getMaterial();
+        return "Chair seat made of " + chairSeatColor.getColour() + " color " + chairSeatMaterial.getMaterialName();
     }
 
     @Override
@@ -37,12 +37,12 @@ public class ChairSeat {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ChairSeat chairSeat = (ChairSeat) o;
-        return getMaterial() == chairSeat.getMaterial() &&
-                getColor() == chairSeat.getColor();
+        return getChairSeatMaterial() == chairSeat.getChairSeatMaterial() &&
+                getChairSeatColor() == chairSeat.getChairSeatColor();
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getMaterial(), getColor());
+        return Objects.hash(getChairSeatMaterial(), getChairSeatColor());
     }
 }

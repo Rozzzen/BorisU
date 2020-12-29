@@ -8,24 +8,14 @@ public enum Color {
     RED ("Red"),
     CAMOUFLAGE ("Camouflage");
 
-    private final String color;
+    private final String colour;
 
-    Color(String color) {
-        this.color = color;
+    Color(String colour) {
+        this.colour = colour;
     }
 
-    public String getColor() {
-        return color;
+    public String getColour() {
+        return colour;
     }
 
-//    @Override
-//    public String toString() {
-//        StringBuilder s = new StringBuilder();
-//        for(Color string : Color.values()) s.append(string.getColor()).append(", ");
-//        return s.toString();
-//    }
-//
-//    public static void main(String[] args) {
-//        System.out.println(Color.BLACK);
-//    }
 }

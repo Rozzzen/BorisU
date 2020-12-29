@@ -10,10 +10,13 @@ import com.java.bohomolov.exceptions.MissingAccessoryException;
 import com.java.bohomolov.interfaces.Foldable;
 
 import java.util.Arrays;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class FishingStool extends Stool implements Foldable {
 
     private boolean isFolded;
+    private static final Logger LOGGER = Logger.getGlobal();
 
     public FishingStool(int height) {
         super(height, Style.CLASSIC, new ChairSeat(Material.CLOTH, Color.CAMOUFLAGE), Arrays.asList(
@@ -37,6 +40,6 @@ public class FishingStool extends Stool implements Foldable {
     @Override
     public void sit() {
         if(getChairSeat() == null) throw new MissingAccessoryException("Missing seat");
-        System.out.println("Siting on fishing stool");
+        LOGGER.log(Level.INFO, "Siting on fishing stool");
     }
 }

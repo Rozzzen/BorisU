@@ -8,13 +8,13 @@ public enum Material {
     PLASTIC("Plastic"),
     CLOTH ("Cloth");
 
-    private final String material;
+    private final String materialName;
 
-    Material(String material) {
-        this.material = material;
+    Material(String materialName) {
+        this.materialName = materialName;
     }
 
-    public String getMaterial() {
-        return material;
+    public String getMaterialName() {
+        return materialName;
     }
 }

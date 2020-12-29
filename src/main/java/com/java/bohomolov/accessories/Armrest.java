@@ -7,24 +7,24 @@ import java.util.Objects;
 
 public class Armrest {
 
-    private final Material material;
-    private final Color color;
+    private final Material armrestMaterial;
+    private final Color armrestColor;
 
-    public Armrest(Material material, Color color) {
-        this.material = material;
-        this.color = color;
+    public Armrest(Material armrestMaterial, Color armrestColor) {
+        this.armrestMaterial = armrestMaterial;
+        this.armrestColor = armrestColor;
     }
 
-    public Material getMaterial() {
-        return material;
+    public Material getArmrestMaterial() {
+        return armrestMaterial;
     }
 
-    public Color getColor() {
-        return color;
+    public Color getArmrestColor() {
+        return armrestColor;
     }
 
     public String toString() {
-        return "Armrests made of " + color.getColor() + " color " + material.getMaterial();
+        return "Armrests made of " + armrestColor.getColour() + " color " + armrestMaterial.getMaterialName();
     }
 
     @Override
@@ -32,12 +32,12 @@ public class Armrest {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Armrest armrest = (Armrest) o;
-        return getMaterial() == armrest.getMaterial() &&
-                getColor() == armrest.getColor();
+        return getArmrestMaterial() == armrest.getArmrestMaterial() &&
+                getArmrestColor() == armrest.getArmrestColor();
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getMaterial(), getColor());
+        return Objects.hash(getArmrestMaterial(), getArmrestColor());
     }
 }
